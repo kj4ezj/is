@@ -12,10 +12,12 @@ describe('is.js', () => {
 
         describe('given', () => {
             test('null', () => expect(is.nullOrEmpty(null)).toEqual(true));
+            test('undefined', () => expect(is.nullOrEmpty(undefined)).toEqual(true));
         });
 
         describe('given a function that returns', () => {
             test('null', () => expect(is.nullOrEmpty(() => null)).toEqual(false));
+            test('undefined', () => expect(is.nullOrEmpty(() => undefined)).toEqual(false));
         });
     });
 
@@ -24,10 +26,12 @@ describe('is.js', () => {
 
         describe('given', () => {
             test('null', () => expect(is.string(null)).toEqual(false));
+            test('undefined', () => expect(is.string(undefined)).toEqual(false));
         });
 
         describe('given a function that returns', () => {
             test('null', () => expect(is.string(() => null)).toEqual(false));
+            test('undefined', () => expect(is.string(() => undefined)).toEqual(false));
         });
     });
 });
