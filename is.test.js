@@ -2,6 +2,7 @@
 const is = require('./is.js');
 
 /* test fixtures */
+const POSITIVE_NUMBER = 18650;
 const STRING = 'The quick brown fox jumps over the lazy dog';
 const WHITESPACE = '  \v  \t \r\n    \n\f ';
 
@@ -23,6 +24,8 @@ describe('is.js', () => {
             test('false', () => expect(is.nullOrEmpty(() => false)).toEqual(false));
             test('non-empty string', () => expect(is.nullOrEmpty(() => STRING)).toEqual(false));
             test('null', () => expect(is.nullOrEmpty(() => null)).toEqual(false));
+            test('number literal', () => expect(is.nullOrEmpty(() => POSITIVE_NUMBER)).toEqual(false));
+            test('number object', () => expect(is.nullOrEmpty(() => new Number(POSITIVE_NUMBER))).toEqual(false));
             test('true', () => expect(is.nullOrEmpty(() => true)).toEqual(false));
             test('undefined', () => expect(is.nullOrEmpty(() => undefined)).toEqual(false));
             test('whitespace', () => expect(is.nullOrEmpty(() => WHITESPACE)).toEqual(false));
@@ -35,6 +38,7 @@ describe('is.js', () => {
             test('false', () => expect(is.nullOrEmpty(false)).toEqual(false));
             test('non-empty string', () => expect(is.nullOrEmpty(STRING)).toEqual(false));
             test('null', () => expect(is.nullOrEmpty(null)).toEqual(true));
+            test('number', () => expect(is.nullOrEmpty(POSITIVE_NUMBER)).toEqual(false));
             test('true', () => expect(is.nullOrEmpty(true)).toEqual(false));
             test('undefined', () => expect(is.nullOrEmpty(undefined)).toEqual(true));
             test('whitespace', () => expect(is.nullOrEmpty(WHITESPACE)).toEqual(true));
@@ -45,6 +49,7 @@ describe('is.js', () => {
             test('empty string', () => expect(is.nullOrEmpty(new String(''))).toEqual(true));
             test('false', () => expect(is.nullOrEmpty(new Boolean(false))).toEqual(false));
             test('non-empty string', () => expect(is.nullOrEmpty(new String(STRING))).toEqual(false));
+            test('number', () => expect(is.nullOrEmpty(new Number(POSITIVE_NUMBER))).toEqual(false));
             test('true', () => expect(is.nullOrEmpty(new Boolean(true))).toEqual(false));
             test('whitespace', () => expect(is.nullOrEmpty(new String(WHITESPACE))).toEqual(true));
             test('zero', () => expect(is.nullOrEmpty(new Number(0))).toEqual(false));
@@ -61,6 +66,8 @@ describe('is.js', () => {
             test('false', () => expect(is.string(() => false)).toEqual(false));
             test('non-empty string', () => expect(is.string(() => STRING)).toEqual(false));
             test('null', () => expect(is.string(() => null)).toEqual(false));
+            test('number literal', () => expect(is.string(() => POSITIVE_NUMBER)).toEqual(false));
+            test('number object', () => expect(is.string(() => new Number(POSITIVE_NUMBER))).toEqual(false));
             test('true', () => expect(is.string(() => true)).toEqual(false));
             test('undefined', () => expect(is.string(() => undefined)).toEqual(false));
             test('whitespace', () => expect(is.string(() => WHITESPACE)).toEqual(false));
@@ -73,6 +80,7 @@ describe('is.js', () => {
             test('false', () => expect(is.string(false)).toEqual(false));
             test('non-empty string', () => expect(is.string(STRING)).toEqual(true));
             test('null', () => expect(is.string(null)).toEqual(false));
+            test('number', () => expect(is.string(POSITIVE_NUMBER)).toEqual(false));
             test('true', () => expect(is.string(true)).toEqual(false));
             test('undefined', () => expect(is.string(undefined)).toEqual(false));
             test('whitespace', () => expect(is.string(WHITESPACE)).toEqual(true));
@@ -83,6 +91,7 @@ describe('is.js', () => {
             test('empty string', () => expect(is.string(new String(''))).toEqual(true));
             test('false', () => expect(is.string(new Boolean(false))).toEqual(false));
             test('non-empty string', () => expect(is.string(new String(STRING))).toEqual(true));
+            test('number', () => expect(is.string(new Number(POSITIVE_NUMBER))).toEqual(false));
             test('true', () => expect(is.string(new Boolean(true))).toEqual(false));
             test('whitespace', () => expect(is.string(new String(WHITESPACE))).toEqual(true));
             test('zero', () => expect(is.string(new Number(0))).toEqual(false));
