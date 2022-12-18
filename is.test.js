@@ -2,6 +2,7 @@
 const is = require('./is.js');
 
 /* test fixtures */
+const STRING = 'The quick brown fox jumps over the lazy dog';
 const WHITESPACE = '  \v  \t \r\n    \n\f ';
 
 /* test cases */
@@ -20,6 +21,7 @@ describe('is.js', () => {
             test('empty string literal', () => expect(is.nullOrEmpty(() => '')).toEqual(false));
             test('empty string object', () => expect(is.nullOrEmpty(() => new String(''))).toEqual(false));
             test('false', () => expect(is.nullOrEmpty(() => false)).toEqual(false));
+            test('non-empty string', () => expect(is.nullOrEmpty(() => STRING)).toEqual(false));
             test('null', () => expect(is.nullOrEmpty(() => null)).toEqual(false));
             test('true', () => expect(is.nullOrEmpty(() => true)).toEqual(false));
             test('undefined', () => expect(is.nullOrEmpty(() => undefined)).toEqual(false));
@@ -29,6 +31,7 @@ describe('is.js', () => {
         describe('given a literal', () => {
             test('empty string', () => expect(is.nullOrEmpty('')).toEqual(true));
             test('false', () => expect(is.nullOrEmpty(false)).toEqual(false));
+            test('non-empty string', () => expect(is.nullOrEmpty(STRING)).toEqual(false));
             test('null', () => expect(is.nullOrEmpty(null)).toEqual(true));
             test('true', () => expect(is.nullOrEmpty(true)).toEqual(false));
             test('undefined', () => expect(is.nullOrEmpty(undefined)).toEqual(true));
@@ -38,6 +41,7 @@ describe('is.js', () => {
         describe('given a primitive object', () => { // primitive objects are treated differently than primitive literals sometimes
             test('empty string', () => expect(is.nullOrEmpty(new String(''))).toEqual(true));
             test('false', () => expect(is.nullOrEmpty(new Boolean(false))).toEqual(false));
+            test('non-empty string', () => expect(is.nullOrEmpty(new String(STRING))).toEqual(false));
             test('true', () => expect(is.nullOrEmpty(new Boolean(true))).toEqual(false));
             test('whitespace', () => expect(is.nullOrEmpty(new String(WHITESPACE))).toEqual(true));
         });
@@ -51,6 +55,7 @@ describe('is.js', () => {
             test('empty string literal', () => expect(is.string(() => '')).toEqual(false));
             test('empty string object', () => expect(is.string(() => new String(''))).toEqual(false));
             test('false', () => expect(is.string(() => false)).toEqual(false));
+            test('non-empty string', () => expect(is.string(() => STRING)).toEqual(false));
             test('null', () => expect(is.string(() => null)).toEqual(false));
             test('true', () => expect(is.string(() => true)).toEqual(false));
             test('undefined', () => expect(is.string(() => undefined)).toEqual(false));
@@ -60,6 +65,7 @@ describe('is.js', () => {
         describe('given a literal', () => {
             test('empty string', () => expect(is.string('')).toEqual(true));
             test('false', () => expect(is.string(false)).toEqual(false));
+            test('non-empty string', () => expect(is.string(STRING)).toEqual(true));
             test('null', () => expect(is.string(null)).toEqual(false));
             test('true', () => expect(is.string(true)).toEqual(false));
             test('undefined', () => expect(is.string(undefined)).toEqual(false));
@@ -69,6 +75,7 @@ describe('is.js', () => {
         describe('given a primitive object', () => { // primitive objects are treated differently than primitive literals sometimes
             test('empty string', () => expect(is.string(new String(''))).toEqual(true));
             test('false', () => expect(is.string(new Boolean(false))).toEqual(false));
+            test('non-empty string', () => expect(is.string(new String(STRING))).toEqual(true));
             test('true', () => expect(is.string(new Boolean(true))).toEqual(false));
             test('whitespace', () => expect(is.string(new String(WHITESPACE))).toEqual(true));
         });
