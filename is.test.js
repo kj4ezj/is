@@ -3,6 +3,7 @@ const is = require('./is.js');
 
 /* test fixtures */
 const BIGINT = BigInt(81129638414606663681390495662081);
+const BINARY = 0b00101010;
 const FALSE = false;
 const HEX = 0x5a7F0FB9a909a5b3e9B1CEf540bc53F8DE18D87e;
 const NEGATIVE_NUMBER = -1;
@@ -40,6 +41,7 @@ describe('is.js', () => {
 
         describe('given a literal', () => {
             test('bigint', () => expect(is.nullOrEmpty(BIGINT)).toEqual(false));
+            test('binary', () => expect(is.nullOrEmpty(BINARY)).toEqual(false));
             test('empty string', () => expect(is.nullOrEmpty('')).toEqual(true));
             test('false', () => expect(is.nullOrEmpty(false)).toEqual(false));
             test('hexadecimal', () => expect(is.nullOrEmpty(HEX)).toEqual(false));
@@ -54,6 +56,7 @@ describe('is.js', () => {
         });
 
         describe('given a primitive object', () => { // primitive objects are treated differently than primitive literals sometimes
+            test('binary', () => expect(is.nullOrEmpty(new Number(BINARY))).toEqual(false));
             test('empty string', () => expect(is.nullOrEmpty(new String(''))).toEqual(true));
             test('false', () => expect(is.nullOrEmpty(new Boolean(false))).toEqual(false));
             test('hexadecimal', () => expect(is.nullOrEmpty(new Number(HEX))).toEqual(false));
@@ -88,6 +91,7 @@ describe('is.js', () => {
 
         describe('given a literal', () => {
             test('bigint', () => expect(is.string(BIGINT)).toEqual(false));
+            test('binary', () => expect(is.string(BINARY)).toEqual(false));
             test('empty string', () => expect(is.string('')).toEqual(true));
             test('false', () => expect(is.string(false)).toEqual(false));
             test('hexadecimal', () => expect(is.string(HEX)).toEqual(false));
@@ -102,6 +106,7 @@ describe('is.js', () => {
         });
 
         describe('given a primitive object', () => { // primitive objects are treated differently than primitive literals sometimes
+            test('binary', () => expect(is.string(new Number(BINARY))).toEqual(false));
             test('empty string', () => expect(is.string(new String(''))).toEqual(true));
             test('false', () => expect(is.string(new Boolean(false))).toEqual(false));
             test('hexadecimal', () => expect(is.string(new Number(HEX))).toEqual(false));
