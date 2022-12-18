@@ -1,7 +1,7 @@
 {
   "name": "@kj4ezj/is",
   "version": "0.0.1",
-  "description": "Extremely lightweight variable tests not provided natively by nodeJS that are common in other languages",
+  "description": "Extremely lightweight, zero dependency variable checks missing in nodeJS but common in other languages",
   "main": "is.js",
   "repository": "https://github.com/kj4ezj/is",
   "homepage": "https://github.com/kj4ezj/is",
