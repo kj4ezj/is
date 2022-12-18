@@ -31,6 +31,7 @@
     },
     "rules": {
       "arrow-parens": "off",
+      "import/extensions": "off",
       "indent": [
         "error",
         4
