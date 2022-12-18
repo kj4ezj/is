@@ -28,6 +28,7 @@
       "jest": true
     },
     "rules": {
+      "arrow-parens": "off",
       "indent": [
         "error",
         4
