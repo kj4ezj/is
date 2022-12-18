@@ -1,3 +1,4 @@
+/* eslint {no-new-wrappers:0} */
 const is = require('./is.js');
 
 afterEach(() => {
@@ -23,6 +24,11 @@ describe('is.js', () => {
             test('true', () => expect(is.nullOrEmpty(true)).toEqual(false));
             test('undefined', () => expect(is.nullOrEmpty(undefined)).toEqual(true));
         });
+
+        describe('given a primitive object', () => {
+            test('false', () => expect(is.nullOrEmpty(new Boolean(false))).toEqual(false));
+            test('true', () => expect(is.nullOrEmpty(new Boolean(true))).toEqual(false));
+        });
     });
 
     describe('is.string()', () => {
@@ -40,6 +46,11 @@ describe('is.js', () => {
             test('null', () => expect(is.string(null)).toEqual(false));
             test('true', () => expect(is.string(true)).toEqual(false));
             test('undefined', () => expect(is.string(undefined)).toEqual(false));
+        });
+
+        describe('given a primitive object', () => {
+            test('false', () => expect(is.string(new Boolean(false))).toEqual(false));
+            test('true', () => expect(is.string(new Boolean(true))).toEqual(false));
         });
     });
 });
