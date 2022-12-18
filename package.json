@@ -10,8 +10,22 @@
     "email": "kj4ezj@pm.me"
   },
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint ."
+  },
   "files": [
     "is.js"
-  ]
+  ],
+  "devDependencies": {
+    "eslint": "^8.30.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "env": {
+      "jest": true
+    },
+    "rules": {}
+  }
 }
