@@ -5,6 +5,7 @@
   "main": "is.js",
   "repository": "https://github.com/kj4ezj/is",
   "homepage": "https://github.com/kj4ezj/is",
+  "bugs": "https://github.com/kj4ezj/is/issues",
   "author": {
     "name": "Zach Butler",
     "email": "kj4ezj@pm.me"
