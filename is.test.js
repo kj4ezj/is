@@ -3,6 +3,7 @@ const is = require('./is.js');
 
 /* test fixtures */
 const FALSE = false;
+const NEGATIVE_NUMBER = -1;
 const POSITIVE_NUMBER = 18650;
 const STRING = 'The quick brown fox jumps over the lazy dog';
 const WHITESPACE = '  \v  \t \r\n    \n\f ';
@@ -23,6 +24,7 @@ describe('is.js', () => {
             test('empty string literal', () => expect(is.nullOrEmpty(() => '')).toEqual(FALSE));
             test('empty string object', () => expect(is.nullOrEmpty(() => new String(''))).toEqual(FALSE));
             test('false', () => expect(is.nullOrEmpty(() => false)).toEqual(FALSE));
+            test('negative number', () => expect(is.nullOrEmpty(() => NEGATIVE_NUMBER)).toEqual(FALSE));
             test('non-empty string', () => expect(is.nullOrEmpty(() => STRING)).toEqual(FALSE));
             test('null', () => expect(is.nullOrEmpty(() => null)).toEqual(FALSE));
             test('number literal', () => expect(is.nullOrEmpty(() => POSITIVE_NUMBER)).toEqual(FALSE));
@@ -37,6 +39,7 @@ describe('is.js', () => {
         describe('given a literal', () => {
             test('empty string', () => expect(is.nullOrEmpty('')).toEqual(true));
             test('false', () => expect(is.nullOrEmpty(false)).toEqual(false));
+            test('negative number', () => expect(is.nullOrEmpty(NEGATIVE_NUMBER)).toEqual(false));
             test('non-empty string', () => expect(is.nullOrEmpty(STRING)).toEqual(false));
             test('null', () => expect(is.nullOrEmpty(null)).toEqual(true));
             test('number', () => expect(is.nullOrEmpty(POSITIVE_NUMBER)).toEqual(false));
@@ -49,6 +52,7 @@ describe('is.js', () => {
         describe('given a primitive object', () => { // primitive objects are treated differently than primitive literals sometimes
             test('empty string', () => expect(is.nullOrEmpty(new String(''))).toEqual(true));
             test('false', () => expect(is.nullOrEmpty(new Boolean(false))).toEqual(false));
+            test('negative number', () => expect(is.nullOrEmpty(new Number(NEGATIVE_NUMBER))).toEqual(false));
             test('non-empty string', () => expect(is.nullOrEmpty(new String(STRING))).toEqual(false));
             test('number', () => expect(is.nullOrEmpty(new Number(POSITIVE_NUMBER))).toEqual(false));
             test('true', () => expect(is.nullOrEmpty(new Boolean(true))).toEqual(false));
@@ -65,6 +69,7 @@ describe('is.js', () => {
             test('empty string literal', () => expect(is.string(() => '')).toEqual(FALSE));
             test('empty string object', () => expect(is.string(() => new String(''))).toEqual(FALSE));
             test('false', () => expect(is.string(() => false)).toEqual(FALSE));
+            test('negative number', () => expect(is.string(() => NEGATIVE_NUMBER)).toEqual(FALSE));
             test('non-empty string', () => expect(is.string(() => STRING)).toEqual(FALSE));
             test('null', () => expect(is.string(() => null)).toEqual(FALSE));
             test('number literal', () => expect(is.string(() => POSITIVE_NUMBER)).toEqual(FALSE));
@@ -79,6 +84,7 @@ describe('is.js', () => {
         describe('given a literal', () => {
             test('empty string', () => expect(is.string('')).toEqual(true));
             test('false', () => expect(is.string(false)).toEqual(false));
+            test('negative number', () => expect(is.string(NEGATIVE_NUMBER)).toEqual(false));
             test('non-empty string', () => expect(is.string(STRING)).toEqual(true));
             test('null', () => expect(is.string(null)).toEqual(false));
             test('number', () => expect(is.string(POSITIVE_NUMBER)).toEqual(false));
@@ -91,6 +97,7 @@ describe('is.js', () => {
         describe('given a primitive object', () => { // primitive objects are treated differently than primitive literals sometimes
             test('empty string', () => expect(is.string(new String(''))).toEqual(true));
             test('false', () => expect(is.string(new Boolean(false))).toEqual(false));
+            test('negative number', () => expect(is.string(new Number(NEGATIVE_NUMBER))).toEqual(false));
             test('non-empty string', () => expect(is.string(new String(STRING))).toEqual(true));
             test('number', () => expect(is.string(new Number(POSITIVE_NUMBER))).toEqual(false));
             test('true', () => expect(is.string(new Boolean(true))).toEqual(false));
