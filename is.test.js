@@ -1,7 +1,8 @@
-/* eslint {no-new-wrappers:0} */
+/* eslint {no-loss-of-precision:0, no-new-wrappers:0} */
 const is = require('./is.js');
 
 /* test fixtures */
+const BIGINT = BigInt(81129638414606663681390495662081);
 const FALSE = false;
 const NEGATIVE_NUMBER = -1;
 const POSITIVE_NUMBER = 18650;
@@ -37,6 +38,7 @@ describe('is.js', () => {
         });
 
         describe('given a literal', () => {
+            test('bigint', () => expect(is.nullOrEmpty(BIGINT)).toEqual(false));
             test('empty string', () => expect(is.nullOrEmpty('')).toEqual(true));
             test('false', () => expect(is.nullOrEmpty(false)).toEqual(false));
             test('negative number', () => expect(is.nullOrEmpty(NEGATIVE_NUMBER)).toEqual(false));
@@ -82,6 +84,7 @@ describe('is.js', () => {
         });
 
         describe('given a literal', () => {
+            test('bigint', () => expect(is.string(BIGINT)).toEqual(false));
             test('empty string', () => expect(is.string('')).toEqual(true));
             test('false', () => expect(is.string(false)).toEqual(false));
             test('negative number', () => expect(is.string(NEGATIVE_NUMBER)).toEqual(false));
