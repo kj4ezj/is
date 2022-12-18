@@ -10,4 +10,8 @@ describe('is.js', () => {
     describe('is.nullOrEmpty()', () => {
         test('exists', () => expect(is.nullOrEmpty).toBeTruthy());
     });
+
+    describe('is.string()', () => {
+        test('exists', () => expect(is.string).toBeTruthy());
+    });
 });
