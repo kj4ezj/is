@@ -33,7 +33,8 @@
         "error",
         4
       ],
-      "max-len": "off"
+      "max-len": "off",
+      "no-restricted-syntax": "off"
     }
   }
 }
