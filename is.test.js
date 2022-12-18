@@ -26,6 +26,8 @@ describe('is.js', () => {
             test('true', () => expect(is.nullOrEmpty(() => true)).toEqual(false));
             test('undefined', () => expect(is.nullOrEmpty(() => undefined)).toEqual(false));
             test('whitespace', () => expect(is.nullOrEmpty(() => WHITESPACE)).toEqual(false));
+            test('zero literal', () => expect(is.nullOrEmpty(() => 0)).toEqual(false));
+            test('zero object', () => expect(is.nullOrEmpty(() => new Number(0))).toEqual(false));
         });
 
         describe('given a literal', () => {
@@ -36,6 +38,7 @@ describe('is.js', () => {
             test('true', () => expect(is.nullOrEmpty(true)).toEqual(false));
             test('undefined', () => expect(is.nullOrEmpty(undefined)).toEqual(true));
             test('whitespace', () => expect(is.nullOrEmpty(WHITESPACE)).toEqual(true));
+            test('zero', () => expect(is.nullOrEmpty(0)).toEqual(false));
         });
 
         describe('given a primitive object', () => { // primitive objects are treated differently than primitive literals sometimes
@@ -44,6 +47,7 @@ describe('is.js', () => {
             test('non-empty string', () => expect(is.nullOrEmpty(new String(STRING))).toEqual(false));
             test('true', () => expect(is.nullOrEmpty(new Boolean(true))).toEqual(false));
             test('whitespace', () => expect(is.nullOrEmpty(new String(WHITESPACE))).toEqual(true));
+            test('zero', () => expect(is.nullOrEmpty(new Number(0))).toEqual(false));
         });
     });
 
@@ -60,6 +64,8 @@ describe('is.js', () => {
             test('true', () => expect(is.string(() => true)).toEqual(false));
             test('undefined', () => expect(is.string(() => undefined)).toEqual(false));
             test('whitespace', () => expect(is.string(() => WHITESPACE)).toEqual(false));
+            test('zero literal', () => expect(is.string(() => 0)).toEqual(false));
+            test('zero object', () => expect(is.string(() => new Number(0))).toEqual(false));
         });
 
         describe('given a literal', () => {
@@ -70,6 +76,7 @@ describe('is.js', () => {
             test('true', () => expect(is.string(true)).toEqual(false));
             test('undefined', () => expect(is.string(undefined)).toEqual(false));
             test('whitespace', () => expect(is.string(WHITESPACE)).toEqual(true));
+            test('zero', () => expect(is.string(0)).toEqual(false));
         });
 
         describe('given a primitive object', () => { // primitive objects are treated differently than primitive literals sometimes
@@ -78,6 +85,7 @@ describe('is.js', () => {
             test('non-empty string', () => expect(is.string(new String(STRING))).toEqual(true));
             test('true', () => expect(is.string(new Boolean(true))).toEqual(false));
             test('whitespace', () => expect(is.string(new String(WHITESPACE))).toEqual(true));
+            test('zero', () => expect(is.string(new Number(0))).toEqual(false));
         });
     });
 });
