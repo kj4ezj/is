@@ -10,36 +10,36 @@ describe('is.js', () => {
     describe('is.nullOrEmpty()', () => {
         test('exists', () => expect(is.nullOrEmpty).toBeTruthy());
 
-        describe('given', () => {
-            test('false', () => expect(is.nullOrEmpty(false)).toEqual(false));
-            test('null', () => expect(is.nullOrEmpty(null)).toEqual(true));
-            test('true', () => expect(is.nullOrEmpty(true)).toEqual(false));
-            test('undefined', () => expect(is.nullOrEmpty(undefined)).toEqual(true));
-        });
-
         describe('given a function that returns', () => {
             test('false', () => expect(is.nullOrEmpty(() => false)).toEqual(false));
             test('null', () => expect(is.nullOrEmpty(() => null)).toEqual(false));
             test('true', () => expect(is.nullOrEmpty(() => true)).toEqual(false));
             test('undefined', () => expect(is.nullOrEmpty(() => undefined)).toEqual(false));
         });
+
+        describe('given a literal', () => {
+            test('false', () => expect(is.nullOrEmpty(false)).toEqual(false));
+            test('null', () => expect(is.nullOrEmpty(null)).toEqual(true));
+            test('true', () => expect(is.nullOrEmpty(true)).toEqual(false));
+            test('undefined', () => expect(is.nullOrEmpty(undefined)).toEqual(true));
+        });
     });
 
     describe('is.string()', () => {
         test('exists', () => expect(is.string).toBeTruthy());
-
-        describe('given', () => {
-            test('false', () => expect(is.string(false)).toEqual(false));
-            test('null', () => expect(is.string(null)).toEqual(false));
-            test('true', () => expect(is.string(true)).toEqual(false));
-            test('undefined', () => expect(is.string(undefined)).toEqual(false));
-        });
 
         describe('given a function that returns', () => {
             test('false', () => expect(is.string(() => false)).toEqual(false));
             test('null', () => expect(is.string(() => null)).toEqual(false));
             test('true', () => expect(is.string(() => true)).toEqual(false));
             test('undefined', () => expect(is.string(() => undefined)).toEqual(false));
+        });
+
+        describe('given a literal', () => {
+            test('false', () => expect(is.string(false)).toEqual(false));
+            test('null', () => expect(is.string(null)).toEqual(false));
+            test('true', () => expect(is.string(true)).toEqual(false));
+            test('undefined', () => expect(is.string(undefined)).toEqual(false));
         });
     });
 });
