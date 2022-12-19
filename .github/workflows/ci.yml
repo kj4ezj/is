@@ -22,7 +22,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Init - node v${{ matrix.node-version }}
-        run: yarn
+        run: yarn --frozen-lockfile
 
       - name: Lint - node v${{ matrix.node-version }}
         run: yarn lint
