@@ -1,0 +1,40 @@
+name: is.js CICD
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18]
+
+    name: is.js - nodeJS v${{ matrix.node-version }}
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup node v${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Init - node v${{ matrix.node-version }}
+        run: yarn
+
+      - name: Lint - node v${{ matrix.node-version }}
+        run: yarn lint
+
+      - name: Test - node v${{ matrix.node-version }}
+        run: yarn test
+
+      - name: Package - node v${{ matrix.node-version }}
+        run: npm pack
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: kj4ezj-is-${{ matrix.node-version }}
+          path: kj4ezj-is-*.tgz
