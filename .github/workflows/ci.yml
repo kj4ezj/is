@@ -31,7 +31,7 @@ jobs:
         run: yarn test
 
       - name: Package - node v${{ matrix.node-version }}
-        run: npm pack
+        run: yarn build
 
       - name: Validation - node v${{ matrix.node-version }}
         run: npm install kj4ezj-is-*.tgz

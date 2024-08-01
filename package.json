@@ -12,6 +12,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "build": "scripts/build.sh",
     "lint": "eslint .",
     "reset": "scripts/reset.sh",
     "test": "jest --coverage"
