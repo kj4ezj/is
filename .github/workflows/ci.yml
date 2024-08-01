@@ -33,6 +33,9 @@ jobs:
       - name: Package - node v${{ matrix.node-version }}
         run: npm pack
 
+      - name: Validation - node v${{ matrix.node-version }}
+        run: npm install kj4ezj-is-*.tgz
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
