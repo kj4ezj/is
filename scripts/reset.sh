@@ -13,6 +13,7 @@ pushd "$NPM_ROOT"
 ee 'jest --clearCache'
 ee 'rm -r coverage node_modules'
 ee 'rm package-lock.json'
+ee 'rm kj4ezj-is-*.tgz'
 ee 'yarn cache clean'
 echo 'nodeJS environment sanitized.'
 popd
