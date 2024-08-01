@@ -34,7 +34,7 @@ jobs:
         run: npm pack
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: kj4ezj-is-${{ matrix.node-version }}
           path: kj4ezj-is-*.tgz
