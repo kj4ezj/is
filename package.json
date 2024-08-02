@@ -3,17 +3,17 @@
   "version": "0.0.1",
   "description": "Extremely lightweight, zero dependency variable checks missing in nodeJS but common in other languages",
   "main": "is.js",
+  "license": "MIT",
+  "homepage": "https://github.com/kj4ezj/is",
+  "bugs": "https://github.com/kj4ezj/is/issues",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kj4ezj/is.git"
   },
-  "homepage": "https://github.com/kj4ezj/is",
-  "bugs": "https://github.com/kj4ezj/is/issues",
   "author": {
     "name": "Zach Butler",
     "email": "kj4ezj+is@pm.me"
   },
-  "license": "MIT",
   "scripts": {
     "act": "act --artifact-server-path .github/artifacts --platform ubuntu-latest=catthehacker/ubuntu:js-latest",
     "build": "scripts/build.sh",
