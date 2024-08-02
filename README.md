@@ -32,7 +32,7 @@ Extremely lightweight, zero dependency variable checks missing in nodeJS but com
 ## Development
 Start here to contribute to this repo.
 
-> [!NOTE]
+> [!NOTE]  
 > The source of truth for the version of nodeJS this project uses is the [`.nvmrc`](./.nvmrc) file. As a utility, as many versions of `node` are supported as possible on a best-effort basis. Check out the `node-version` key in the [`ci.yml`](./.github/workflows/ci.yml) to see which versions are being tested.
 
 ### Prerequisites
@@ -41,13 +41,13 @@ Contributors will need the following tools:
     - [docker](https://docs.docker.com/engine/install) - required by `act`
         - Docker Desktop is not required, you only need the free [Docker Engine](https://docs.docker.com/engine).
 - [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-- [nodeJS](https://www.w3schools.com/nodejs/nodejs_intro.asp)
+- [nodeJS](https://www.w3schools.com/nodejs/nodejs_intro.asp)  
     Install `node` using `nvm`. In the root of this repo:
     ```bash
     nvm install
     ```
     This will automagically install and use the correct version of `node` for this project, as defined in the [`.nvmrc`](./.nvmrc) file.
-- [yarn](https://yarnpkg.com) version 1
+- [yarn](https://yarnpkg.com) version 1  
     The easiest way to install this is using `npm`, which is installed with `node` by `nvm`.
     ```bash
     npm install --global yarn
@@ -89,7 +89,7 @@ The "build" command calls [`scripts/build.sh`](./scripts/build.sh), which packs 
 ### Reset
 This project contains a script to sanitize the project's `node` environment.
 
-> [!WARNING]
+> [!WARNING]  
 > This will delete build artifacts!
 
 ```bash
