@@ -98,14 +98,15 @@ yarn reset
 This makes it easy to switch between `node` major versions cleanly.
 
 ## See Also
-- [act](https://github.com/nektos/act) - run GitHub Actions locally
-- [docker](https://docs.docker.com/engine)
-- [eslint](https://eslint.org)
-    - [airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base)
-- [jest](https://jestjs.io)
-- [nvm](https://github.com/nvm-sh/nvm)
-- [nodeJS](https://www.w3schools.com/nodejs/nodejs_intro.asp)
-- [yarn](https://yarnpkg.com)
+- Tooling
+    - [act](https://github.com/nektos/act) - run GitHub Actions locally
+    - [docker](https://docs.docker.com/engine)
+    - [eslint](https://eslint.org)
+        - [airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base)
+    - [jest](https://jestjs.io)
+    - [nvm](https://github.com/nvm-sh/nvm)
+    - [nodeJS](https://www.w3schools.com/nodejs/nodejs_intro.asp)
+    - [yarn](https://yarnpkg.com)
 
 ***
 > **_Legal Notice_**  
