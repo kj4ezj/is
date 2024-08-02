@@ -7,11 +7,6 @@ function ee()
     eval "$@" || :
 }
 
-function sanitize()
-{
-    printf "$*" | sed 's/[^-._a-zA-Z0-9]/-/g' | tr -s '-'
-}
-
 echo "Starting build. - ${BASH_SOURCE[0]}"
 # environment
 NPM_ROOT="$(npm run env | grep '^PWD' | cut -d '=' -f '2')"
@@ -27,7 +22,6 @@ echo "Found package.json for \"$PACKAGE_NAME\" version \"$PACKAGE_VERSION\"."
 export GIT_COMMIT="$(git rev-parse HEAD)"
 export GIT_SHORT_COMMIT="$(git rev-parse --short HEAD)"
 export GIT_TAG="$(git --no-pager tag --points-at HEAD)"
-SANITIZED_TAG="$(sanitize "$GIT_TAG")"
 # verify git tag matches package.json version, if it exists
 if [[ -z "$GIT_TAG" ]]; then
     printf '\e[1;33mNOTICE: Not a tagged build, no software will be published.\e[0m\n'
@@ -54,7 +48,6 @@ if [[ -z "$GIT_BRANCH" ]]; then # detached head, find tag on base branch or retu
         export GIT_BRANCH="$(echo "$BRANCHES" | tail -n 1 | tr -d '[:space:]')"
     fi
 fi
-SANITIZED_BRANCH="$(sanitize "$GIT_BRANCH")"
 # github actions info
 if [[ -n "$GITHUB_TRIGGERING_ACTOR" ]]; then
     export ACTOR="$GITHUB_TRIGGERING_ACTOR"
