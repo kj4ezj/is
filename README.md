@@ -15,6 +15,7 @@ Extremely lightweight, zero dependency variable checks missing in nodeJS but com
 
 1. [Development](#development)
     1. [Prerequisites](#prerequisites)
+    1. [Initialization](#initialization)
 1. [See Also](#see-also)
 
 <!-- contents markdown end -->
@@ -48,6 +49,17 @@ Contributors will need the following tools:
     npm install --global yarn
     ```
 These tools are all you need to get started!
+
+### Initialization
+Once you have the [prerequisites](#prerequisites) installed, you can get going by navigating to the root of this repo, making sure `nvm` is using the correct version of nodeJS...
+```bash
+nvm install
+```
+...then downloading all project dependencies.
+```bash
+yarn
+```
+Easy.
 
 ## See Also
 - [act](https://github.com/nektos/act) - run GitHub Actions locally
