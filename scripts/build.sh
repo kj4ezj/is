@@ -29,12 +29,16 @@ export GIT_SHORT_COMMIT="$(git rev-parse --short HEAD)"
 export GIT_TAG="$(git --no-pager tag --points-at HEAD)"
 SANITIZED_TAG="$(sanitize "$GIT_TAG")"
 # verify git tag matches package.json version, if it exists
-if [[ -n "$GIT_TAG" && "$GIT_TAG" != "v$PACKAGE_VERSION" ]]; then
+if [[ -z "$GIT_TAG" ]]; then
+    printf '\e[1;33mNOTICE: Not a tagged build, no software will be published.\e[0m\n'
+elif [[ "$GIT_TAG" != "v$PACKAGE_VERSION" ]]; then
     printf '\e[1;31mERROR: The git tag does not match the package.json version!\e[0m\n'
     echo "             git tag: $GIT_TAG"
     echo "package.json version: $PACKAGE_VERSION"
     echo 'These must match to build a release. Rejecting build.'
     exit 10
+else
+    printf '\e[1;36mNOTICE: Tagged build, software will be published!\e[0m\n'
 fi
 # git branch
 export GIT_BRANCH="$(git branch --show-current)"
