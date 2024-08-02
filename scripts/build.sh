@@ -86,6 +86,8 @@ ee 'npm pack'
 if [[ "$CI" == 'true' ]]; then
     echo 'Validating package can be installed...'
     ee 'npm install -g kj4ezj-is-*.tgz'
+else
+    printf '\e[1;33mNOTICE: Skipping validation step for local build.\e[0m\n'
 fi
 # publish
 echo 'Publishing...'
@@ -100,6 +102,7 @@ else
     printf '\e[1;32mPublished to npm!\e[0m\n'
 fi
 # clean up
+echo 'Cleaning up.'
 ee mv package.json.$UNIX_TIME.bak package.json
 popd
 echo "Done. - ${BASH_SOURCE[0]}"
