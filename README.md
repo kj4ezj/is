@@ -21,6 +21,7 @@ Install `@kj4ezj/is` from [NPM](https://www.npmjs.com/package/@kj4ezj/is) with y
 1. [Background](#background)
 1. [Usage](#usage)
     1. [`is.nullOrEmpty()`](#isnullorempty)
+    1. [`is.string()`](#isstring)
 1. [Development](#development)
     1. [Prerequisites](#prerequisites)
     1. [Initialization](#initialization)
@@ -159,6 +160,53 @@ new Object({key: 'value'})
 </tr>
 </table>
 <!-- emptiness table end -->
+
+See the [test cases](./is.test.js) written against expectations for more info, or try it in an interactive shell.
+
+### is.string()
+JavaScript has two different types of strings:
+1. String primitives - `''`, `""`, ``` `` ```, `String()`, and `String('')`
+1. String objects - `new String()`
+
+These are fundamentally two different _types_, even though JavaScript _pretends_ not to have types. String primitives are fundamentally immutable literals of type `string`, while string objects are fundamentally type `Object` of class `String`.
+
+> [!TIP]  
+> JavaScript hides this from you using [autoboxing](https://medium.com/weekly-webtips/autoboxing-in-javascript-a368b42d8969). When you access a property or method on a string primitive, JavaScript temporarily converts (or "boxes") the string primitive into a `String` object. This allows the string primitive to access the properties and methods available on `String.prototype`. Once the property or method is accessed, the temporary `String` object is discarded, and the original string primitive remains unchanged.
+
+This makes it complicated for programmers to determine if a variable is a string because `String` objects are _not_ strings.
+
+![JavaScript string type examples](https://github.com/user-attachments/assets/7a70cc19-8cb7-469f-af91-bd8cfdc31844)
+
+Most of the time we do not care about the internal mechanics of the language, we just want to know if a variable contains a string in a practical sense.
+```js
+is.string()             // false
+is.string(undefined)    // false
+is.string(null)         // false
+is.string('')           // TRUE
+is.string(' ')          // TRUE
+is.string('yeet')       // TRUE
+is.string('    \n\t')   // TRUE
+is.string([])           // false
+is.string({})           // false
+
+is.string(String(''))                   // TRUE
+is.string(Array([]))                    // false
+is.string(Array(['yeet']))              // false
+is.string(Object({}))                   // false
+is.string(Object({key: 'value'}))       // false
+
+is.string(new String(''))               // TRUE
+is.string(new Array([]))                // false
+is.string(new Array(['yeet']))          // false
+is.string(new Object({}))               // false
+is.string(new Object({key: 'value'}))   // false
+
+is.string(() => undefined)              // false
+is.string(() => null)                   // false
+is.string(() => '')                     // false
+is.string(() => new String(''))         // false
+is.string(() => new String('yeet'))     // false
+```
 
 See the [test cases](./is.test.js) written against expectations for more info, or try it in an interactive shell.
 
