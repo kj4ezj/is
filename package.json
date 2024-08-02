@@ -12,6 +12,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "act": "act --artifact-server-path .github/artifacts --platform ubuntu-latest=catthehacker/ubuntu:js-latest",
     "build": "scripts/build.sh",
     "lint": "eslint .",
     "reset": "scripts/reset.sh",
