@@ -20,6 +20,7 @@ Extremely lightweight, zero dependency variable checks missing in nodeJS but com
     1. [Test](#test)
     1. [Build](#build)
     1. [Reset](#reset)
+    1. [CI](#ci)
 1. [See Also](#see-also)
 
 <!-- contents markdown end -->
@@ -97,7 +98,22 @@ yarn reset
 ```
 This makes it easy to switch between `node` major versions cleanly.
 
+### CI
+This project uses GitHub Actions for CI.
+- **is.js CI**s - initialize, lint, and test, and publish the `is.js` project.
+    - [Pipeline](https://github.com/kj4ezj/is/actions/workflows/ci.yml)
+    - [Documentation](./.github/workflows/README.md)
+
+You can run the GitHub Actions workflow(s) locally using [act](https://github.com/nektos/act).
+```bash
+yarn act
+```
+Please make sure your changes do not break `act` compatibility.
+
 ## See Also
+- CI
+    - [Pipeline](https://github.com/kj4ezj/is/actions/workflows/ci.yml)
+    - [Documentation](./.github/workflows/README.md)
 - Tooling
     - [act](https://github.com/nektos/act) - run GitHub Actions locally
     - [docker](https://docs.docker.com/engine)
