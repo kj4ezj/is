@@ -87,6 +87,18 @@ if [[ "$CI" == 'true' ]]; then
     echo 'Validating package can be installed...'
     ee 'npm install -g kj4ezj-is-*.tgz'
 fi
+# publish
+echo 'Publishing...'
+if [[ -z "$GIT_TAG" ]]; then
+    printf '\e[1;33mNOTICE: Not a tagged build, no software will be published.\e[0m\n'
+elif [[ "$CI" != 'true' || -n "$ACT" ]]; then
+    printf '\e[1;33mNOTICE: Skipping publish step for local build.\e[0m\n'
+elif [[ "$NODE_MAJOR_VERSION" != "$(cat .nvmrc | tr -d '[:space:]')" ]]; then
+    printf '\e[1;33mNOTICE: Skipping publish step for older Node.js matrix job.\e[0m\n'
+else
+    ee 'npm publish --provenance --access public'
+    printf '\e[1;32mPublished to npm!\e[0m\n'
+fi
 # clean up
 ee mv package.json.$UNIX_TIME.bak package.json
 popd
