@@ -19,6 +19,7 @@ Extremely lightweight, zero dependency variable checks missing in nodeJS but com
     1. [Lint](#lint)
     1. [Test](#test)
     1. [Build](#build)
+    1. [Reset](#reset)
 1. [See Also](#see-also)
 
 <!-- contents markdown end -->
@@ -84,6 +85,17 @@ This is how release artifacts are generated and, in [CI](#ci), published.
 yarn build
 ```
 The "build" command calls [`scripts/build.sh`](./scripts/build.sh), which packs build metadata into the [`package.json`](./package.json) under the top-level `git` key and calls `npm pack` to generate a `*.tgz` file for distribution. If this script is called in a [CI](#ci) environment then it will continue on to install the newly generated package to validate it can be installed, per [NPM's instructions](https://docs.npmjs.com/creating-and-publishing-scoped-public-packages#testing-your-package). In a tagged build, it will verify that the tag matches the version string in the [`package.json`](./package.json) and publish it to [NPM](https://www.npmjs.com/package/@kj4ezj/is) with [provenance](https://docs.npmjs.com/generating-provenance-statements).
+
+### Reset
+This project contains a script to sanitize the project's `node` environment.
+
+> [!WARNING]
+> This will delete build artifacts!
+
+```bash
+yarn reset
+```
+This makes it easy to switch between `node` major versions cleanly.
 
 ## See Also
 - [act](https://github.com/nektos/act) - run GitHub Actions locally
