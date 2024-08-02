@@ -83,8 +83,10 @@ ee 'cat package.json | jq .git'
 echo 'Building...'
 ee 'npm pack'
 # validate
-echo 'Validating package can be installed...'
-ee 'npm install -g kj4ezj-is-*.tgz'
+if [[ "$CI" == 'true' ]]; then
+    echo 'Validating package can be installed...'
+    ee 'npm install -g kj4ezj-is-*.tgz'
+fi
 # clean up
 ee mv package.json.$UNIX_TIME.bak package.json
 popd
