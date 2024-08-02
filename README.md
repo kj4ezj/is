@@ -1,4 +1,4 @@
-# is
+# is.js
 Extremely lightweight, zero dependency variable checks missing in nodeJS but common in other languages.
 
 <!-- contents box begin -->
