@@ -18,6 +18,7 @@ Extremely lightweight, zero dependency variable checks missing in nodeJS but com
     1. [Initialization](#initialization)
     1. [Lint](#lint)
     1. [Test](#test)
+    1. [Build](#build)
 1. [See Also](#see-also)
 
 <!-- contents markdown end -->
@@ -76,6 +77,13 @@ This project uses the [jest](https://jestjs.io) test framework.
 yarn test
 ```
 The goal is full test coverage, not to chase a number but to exhaustively test all expectations.
+
+### Build
+This is how release artifacts are generated and, in [CI](#ci), published.
+```bash
+yarn build
+```
+The "build" command calls [`scripts/build.sh`](./scripts/build.sh), which packs build metadata into the [`package.json`](./package.json) under the top-level `git` key and calls `npm pack` to generate a `*.tgz` file for distribution. If this script is called in a [CI](#ci) environment then it will continue on to install the newly generated package to validate it can be installed, per [NPM's instructions](https://docs.npmjs.com/creating-and-publishing-scoped-public-packages#testing-your-package). In a tagged build, it will verify that the tag matches the version string in the [`package.json`](./package.json) and publish it to [NPM](https://www.npmjs.com/package/@kj4ezj/is) with [provenance](https://docs.npmjs.com/generating-provenance-statements).
 
 ## See Also
 - [act](https://github.com/nektos/act) - run GitHub Actions locally
