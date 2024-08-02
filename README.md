@@ -1,5 +1,21 @@
 # is.js
 Extremely lightweight, zero dependency variable checks missing in nodeJS but common in other languages.
+```ts
+is.nullOrEmpty(input: any): boolean
+is.string(input: any): boolean;
+```
+Install it from [NPM](https://www.npmjs.com/package/@kj4ezj/is) with your preferred package manager...
+```bash
+bun add @kj4ezj/is
+cnpm install @kj4ezj/is
+npm install @kj4ezj/is
+pnpm add @kj4ezj/is
+yarn add @kj4ezj/is
+```
+...then import it into your source code.
+```js
+const is = require('@kj4ezj/is');
+```
 
 <!-- contents box begin -->
 <table>
