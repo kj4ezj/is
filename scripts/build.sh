@@ -39,7 +39,7 @@ fi
 # git branch
 export GIT_BRANCH="$(git branch --show-current)"
 if [[ -z "$GIT_BRANCH" ]]; then # detached head, find tag on base branch or return a feature branch
-    BRANCHES="$(git branch --contains "tags/$GIT_TAG" | tail -n +2 | tr -d ' ')" # get branches containing tag
+    BRANCHES="$(git branch --contains "$GIT_COMMIT" | tail -n +2 | tr -d ' ')" # get branches containing tag
     if [[ "$(echo "$BRANCHES" | grep -cP '^develop$')" == '1' ]]; then
         export GIT_BRANCH='develop'
     elif [[ "$(echo "$BRANCHES" | grep -cP '^main$')" == '1' ]]; then
