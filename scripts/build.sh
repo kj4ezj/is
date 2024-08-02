@@ -14,6 +14,14 @@ pushd "$NPM_ROOT"
 ee node --version
 ee yarn --version
 ee npm --version
+if [[ "$CI" == 'true' && -z "$ACT" && -n "$NODE_AUTH_TOKEN" ]]; then
+    printf '\e[1;35mNOTICE: Found NODE_AUTH_TOKEN of length %s.\e[0m\n' "${#NODE_AUTH_TOKEN}"
+elif [[ "$CI" == 'true' && -z "$ACT" ]]; then
+    printf '\e[1;31mERROR: Missing NODE_AUTH_TOKEN!\e[0m\n'
+    exit 11
+else
+    echo 'Ignoring NODE_AUTH_TOKEN for local build.'
+fi
 # package info
 PACKAGE_NAME="$(cat package.json | jq -r '.name')"
 PACKAGE_VERSION="$(cat package.json | jq -r '.version')"
