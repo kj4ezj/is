@@ -20,6 +20,7 @@ Install `@kj4ezj/is` from [NPM](https://www.npmjs.com/package/@kj4ezj/is) with y
 
 1. [Background](#background)
 1. [Usage](#usage)
+    1. [`is.nullOrEmpty()`](#isnullorempty)
 1. [Development](#development)
     1. [Prerequisites](#prerequisites)
     1. [Initialization](#initialization)
@@ -61,6 +62,105 @@ is.nullOrEmpty(input: any): boolean
 is.string(input: any): boolean;
 ```
 These are documented in the sections below, but the [test cases](./is.test.js) written against expectations should be considered authoritative.
+
+### is.nullOrEmpty()
+This is a simple variable emptiness check. Pass it literally anything and it will return `true` if it is `undefined`, `null`, or empty; and `false` otherwise.
+```ts
+is.nullOrEmpty(input: any): boolean
+```
+Emptiness is considered in a practical sense, and may be slightly different than implementations in other languages.
+
+<!-- emptiness table begin -->
+<table>
+<tr/>
+<tr>
+<td><div align="center"><b>Category</b></div></td>
+<td><div align="center"><b>Returns</b></div></td>
+<td><div align="center"><b>Examples</b></div></td>
+</tr>
+<tr>
+<td><b>Empty</b></td>
+<td><code>true</code></td>
+<td>
+<!-- empty markdown begin -->
+
+```js
+// literals
+undefined
+null
+[]          // zero-length arrays
+[[]]        // zero-length multi-dimension arrays
+{}          // empty objects
+''          // equivalent to "" or ``
+' '         // strings containing only whitespace
+'    \n\t'
+
+// primitive objects
+Array([])
+Object({})
+String(' \n ')
+
+// constructed objects
+new Array([])
+new Array([[]])
+new Object({})
+new String(' \n ')
+```
+
+<!-- empty markdown end -->
+</td>
+</tr>
+<tr>
+<td><b>Not Empty</b></td>
+<td><code>false</code></td>
+<td>
+<!-- not empty markdown begin -->
+
+```js
+// literals
+true
+false
+-1
+0
+123
+0xFFFF00
+0b00101010
+'yeet'
+[[],[]]  // non-zero array length
+['one', 'two', 'three']
+{key: 'value'}
+
+// primitive types
+Boolean(false)
+Number(0)
+BigInt(81129638414606663681390495662081)
+
+// constructed types
+new Boolean(false)
+new Number(0)
+new String('yeet')
+new Array([[],[]])
+new Object({key: 'value'})
+
+// functions, no matter the return type or contents
+() => undefined
+() => null
+() => false
+() => 0
+() => ''
+() => []
+() => {}
+() => new Number(0)
+() => new String('')
+```
+
+<!-- not empty markdown end -->
+</td>
+</tr>
+</table>
+<!-- emptiness table end -->
+
+See the [test cases](./is.test.js) written against expectations for more info, or try it in an interactive shell.
 
 ## Development
 Start here to contribute to this repo.
