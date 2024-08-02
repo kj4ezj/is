@@ -29,6 +29,7 @@ const is = require('@kj4ezj/is');
 <p/>
 <!-- contents markdown begin -->
 
+1. [Background](#background)
 1. [Development](#development)
     1. [Prerequisites](#prerequisites)
     1. [Initialization](#initialization)
@@ -45,6 +46,11 @@ const is = require('@kj4ezj/is');
 </tr>
 </table>
 <!-- contents box end -->
+
+## Background
+In the old days™, nodeJS lacked most utilities developers take for granted in other languages. The community created libraries like [lodash](https://github.com/lodash/lodash) (commonly imported and used as `_` in projects) to fill this void. However, modern `node` includes intrinsics that provide almost all of the functionality these large libraries were built to provide. It seems silly to import a 1.4 MB library just to test if a variable is empty.
+
+The `is.js` library provides the most fundamental utilities remaining absent in modern `node` that I expect to have in any language, and nothing more. At the time of writing, `is.js` weighs in at just _461 bytes_, five orders of magnitude smaller than `lodash`!
 
 ## Development
 Start here to contribute to this repo.
