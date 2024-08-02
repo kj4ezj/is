@@ -1,10 +1,22 @@
 name: is.js CICD
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches:
+      - develop
+      - main
+      - master
+    tags:
+      - '*'
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
 
     strategy:
       matrix:
@@ -22,7 +34,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Init - node v${{ matrix.node-version }}
-        run: yarn --frozen-lockfile
+        run: yarn --frozen-lockfile --non-interactive
 
       - name: Lint - node v${{ matrix.node-version }}
         run: yarn lint
@@ -30,8 +42,11 @@ jobs:
       - name: Test - node v${{ matrix.node-version }}
         run: yarn test
 
-      - name: Package - node v${{ matrix.node-version }}
-        run: npm pack
+      - name: Build - node v${{ matrix.node-version }}
+        run: yarn build
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_API_KEY }}
+          NODE_MAJOR_VERSION: ${{ matrix.node-version }}
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
