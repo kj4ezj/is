@@ -17,6 +17,7 @@ Extremely lightweight, zero dependency variable checks missing in nodeJS but com
     1. [Prerequisites](#prerequisites)
     1. [Initialization](#initialization)
     1. [Lint](#lint)
+    1. [Test](#test)
 1. [See Also](#see-also)
 
 <!-- contents markdown end -->
@@ -69,11 +70,19 @@ yarn lint
 ```
 The purpose of linting is to catch bugs early, not to create unnecessary friction, so many rules which will not realistically catch bugs are disabled.
 
+### Test
+This project uses the [jest](https://jestjs.io) test framework.
+```bash
+yarn test
+```
+The goal is full test coverage, not to chase a number but to exhaustively test all expectations.
+
 ## See Also
 - [act](https://github.com/nektos/act) - run GitHub Actions locally
 - [docker](https://docs.docker.com/engine)
 - [eslint](https://eslint.org)
     - [airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base)
+- [jest](https://jestjs.io)
 - [nvm](https://github.com/nvm-sh/nvm)
 - [nodeJS](https://www.w3schools.com/nodejs/nodejs_intro.asp)
 - [yarn](https://yarnpkg.com)
