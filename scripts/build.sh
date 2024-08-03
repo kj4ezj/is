@@ -106,6 +106,7 @@ elif [[ "$CI" != 'true' || -n "$ACT" ]]; then
 elif [[ "$NODE_MAJOR_VERSION" != "$(cat .nvmrc | tr -d '[:space:]')" ]]; then
     printf '\e[1;33mNOTICE: Skipping publish step for older Node.js matrix job.\e[0m\n'
 else
+    echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_API_KEY }}" > ~/.npmrc
     ee 'npm publish --provenance --access public'
     printf '\e[1;32mPublished to npm!\e[0m\n'
 fi
