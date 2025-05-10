@@ -4,7 +4,7 @@ set -eo pipefail
 function ee()
 {
     echo "$ $*"
-    eval "$@" || :
+    eval "$@"
 }
 
 echo "Starting build. - ${BASH_SOURCE[0]}"
