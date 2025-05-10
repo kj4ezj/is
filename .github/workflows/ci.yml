@@ -33,7 +33,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14, 16, 18, 20]
+        node-version: [14, 16, 18, 20, 22]
 
     name: is.js - nodeJS v${{ matrix.node-version }}
 
