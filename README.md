@@ -168,7 +168,7 @@ JavaScript has two different types of strings:
 1. String primitives - `''`, `""`, ``` `` ```, `String()`, and `String('')`
 1. String objects - `new String()`
 
-These are fundamentally two different _types_, even though JavaScript _pretends_ not to have types. String primitives are fundamentally immutable literals of type `string`, while string objects are fundamentally type `Object` of class `String`.
+These are two different _types_, even though JavaScript _pretends_ not to have types. String primitives are fundamentally immutable literals of type `string`, while string objects are fundamentally type `Object` of class `String`.
 
 > [!TIP]  
 > JavaScript hides this from you using [autoboxing](https://medium.com/weekly-webtips/autoboxing-in-javascript-a368b42d8969). When you access a property or method on a string primitive, JavaScript temporarily converts (or "boxes") the string primitive into a `String` object. This allows the string primitive to access the properties and methods available on `String.prototype`. Once the property or method is accessed, the temporary `String` object is discarded, and the original string primitive remains unchanged.
@@ -280,7 +280,7 @@ This makes it easy to switch between `node` major versions cleanly.
 
 ### CI
 This project uses GitHub Actions for CI.
-- **is.js CI**s - initialize, lint, and test, and publish the `is.js` project.
+- **is.js CICD** - initialize, lint, and test, and publish the `is.js` project.
     - [Pipeline](https://github.com/kj4ezj/is/actions/workflows/ci.yml)
     - [Documentation](./.github/workflows/README.md)
 
