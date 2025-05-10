@@ -28,6 +28,7 @@ Install `@kj4ezj/is` from [NPM](https://www.npmjs.com/package/@kj4ezj/is) with y
     1. [Lint](#lint)
     1. [Test](#test)
     1. [Build](#build)
+    1. [Upgrade](#upgrade)
     1. [Reset](#reset)
     1. [CI](#ci)
 1. [See Also](#see-also)
@@ -266,6 +267,20 @@ This is how release artifacts are generated and, in [CI](#ci), published.
 yarn build
 ```
 The "build" command calls [`scripts/build.sh`](./scripts/build.sh), which packs build metadata into the [`package.json`](./package.json) under the top-level `git` key and calls `npm pack` to generate a `*.tgz` file for distribution. If this script is called in a [CI](#ci) environment then it will continue on to install the newly generated package to validate it can be installed, per [NPM's instructions](https://docs.npmjs.com/creating-and-publishing-scoped-public-packages#testing-your-package). In a tagged build, it will verify that the tag matches the version string in the [`package.json`](./package.json) and publish it to [NPM](https://www.npmjs.com/package/@kj4ezj/is) with [provenance](https://docs.npmjs.com/generating-provenance-statements).
+
+### Upgrade
+> [!CAUTION]
+> ESLint 9 introduced numerous [breaking changes](https://eslint.org/docs/latest/use/migrate-to-9.0.0) including [dropping support for node 14, 16](https://github.com/eslint/eslint/issues/17595), [breaking eslint-config-airbnb-base](https://eslint.org/blog/2023/10/flat-config-rollout-plans), and [breaking my configuration](https://github.com/eslint/rfcs/tree/main/designs/2019-config-simplification#how-does-this-affect-configuration-via-packagejson).
+
+Upgrade dependencies in the `yarn.lock` only.
+```bash
+yarn upgrade
+```
+Upgrade both the `yarn.lock` and the `package.json`.
+```bash
+yarn upgrade --latest
+```
+Run `yarn act` after either to verify the upgraded dependencies work with the project on all supported nodeJS versions.
 
 ### Reset
 This project contains a script to sanitize the project's `node` environment.
