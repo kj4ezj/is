@@ -107,8 +107,7 @@ elif [[ "$NODE_MAJOR_VERSION" != "$(cat .nvmrc | tr -d '[:space:]')" ]]; then
     printf '\e[1;33mNOTICE: Skipping publish step for older Node.js matrix job.\e[0m\n'
 else
     echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
-    ee 'npm config set registry https://registry.npmjs.org'
-    ee 'npm publish --provenance --access public'
+    ee 'npm publish --registry=https://registry.npmjs.org --access public --provenance'
     printf '\e[1;32mPublished to npm!\e[0m\n'
 fi
 # clean up
