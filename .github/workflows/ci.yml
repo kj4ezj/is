@@ -9,6 +9,8 @@ on:
     tags:
       - '*'
   pull_request:
+  schedule:
+    - cron: '17 19 * * 6' # Saturday 19:17 UTC
   workflow_dispatch:
 
 jobs:
